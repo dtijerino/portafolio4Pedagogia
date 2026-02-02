@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio #4 - Daniel Tijerino</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Paleta Bio-Digital */
+            --primary-dark: #111827;
+            --tech-green: #10b981; /* Verde Bio */
+            --tech-blue: #3b82f6;  /* Azul Sistema */
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-main: #374151;
+            --text-light: #6b7280;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL --- */
+        .dashboard-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+        }
+
+        /* --- ENCABEZADO TIPO SISTEMA --- */
+        header {
+            background: var(--primary-dark);
+            color: white;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 5px solid var(--tech-green);
+        }
+
+        /* Elemento decorativo de fondo */
+        header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1));
+            clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .header-layout {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        .logo-container {
+            margin-left: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            /* Centrado extra por si la imagen es pequeña */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px; 
+            height: 150px; /* Fijamos altura para uniformidad */
+        }
+
+        .logo-container img {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+        }
+
+        .system-badge {
+            font-family: 'Fira Code', monospace;
+            background: rgba(255,255,255,0.1);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--tech-green);
+            display: inline-block;
+            margin-bottom: 15px;
+            border: 1px solid var(--tech-green);
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: white;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-family: 'Fira Code', monospace;
+            color: var(--tech-blue);
+            margin-top: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* --- GRID DE INFORMACIÓN --- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 0 40px;
+            margin-top: -30px; /* Superposición estética */
+            position: relative;
+            z-index: 10;
+        }
+
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--tech-green);
+            transition: transform 0.2s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .info-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            color: var(--text-light);
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .info-value {
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-size: 0.95rem;
+            line-height: 1.3;
+        }
+
+        /* --- ÁREA DE CONTENIDO --- */
+        .content-area {
+            padding: 50px 40px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            margin-top: 60px;
+            border-bottom: 2px solid #f3f4f6;
+            padding-bottom: 10px;
+        }
+
+        .section-number {
+            font-family: 'Fira Code', monospace;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #d1d5db;
+            margin-right: 15px;
+            line-height: 1;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        p, li {
+            font-size: 1.05rem;
+            color: #4b5563;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        strong {
+            color: var(--tech-green);
+            font-weight: 700;
+        }
+
+        /* --- IMÁGENES ESTILO SCANNER --- */
+        .scanner-frame {
+            position: relative;
+            margin: 35px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            background: #000;
+        }
+
+        .scanner-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.9;
+            transition: all 0.5s ease;
+        }
+
+        .scanner-frame:hover img {
+            opacity: 1;
+            transform: scale(1.02);
+        }
+
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--tech-green);
+            box-shadow: 0 0 15px var(--tech-green);
+            animation: scan 4s ease-in-out infinite;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        .caption-bar {
+            background: var(--primary-dark);
+            color: var(--tech-green);
+            padding: 10px 20px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            text-align: right;
+            border-top: 2px solid var(--tech-green);
+        }
+
+        /* --- TARJETAS DE PROPUESTA --- */
+        .proposal-card {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proposal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -10px rgba(16, 185, 129, 0.15);
+            border-color: var(--tech-green);
+        }
+
+        .border-blue { border-left: 5px solid var(--tech-blue); }
+        .border-green { border-left: 5px solid var(--tech-green); }
+        .border-dark { border-left: 5px solid var(--primary-dark); }
+
+        .proposal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .proposal-badge {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--tech-blue);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-family: 'Fira Code', monospace;
+        }
+
+        h3 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+        }
+
+        .tech-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tech-list li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .tech-list li::before {
+            content: ">>";
+            position: absolute;
+            left: 0;
+            color: var(--tech-green);
+            font-weight: bold;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background: var(--primary-dark);
+            color: #9ca3af;
+            text-align: center;
+            padding: 40px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            border-top: 4px solid var(--tech-green);
+        }
+
+        @media (max-width: 768px) {
+            .header-layout { flex-direction: column-reverse; align-items: flex-start; }
+            .logo-container { margin: 0 0 20px 0; }
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 1rem; }
+            .info-grid { grid-template-columns: 1fr; padding: 0 20px; margin-top: 20px;}
+            .content-area { padding: 30px 20px; }
+            .section-header { flex-direction: column; align-items: flex-start; }
+            .section-number { margin-bottom: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <header>
+            <div class="header-layout">
+                <div class="header-text">
+                    <div class="system-badge">ESTADO DEL SISTEMA: RECONFIGURACIÓN ACTIVA</div>
+                    <h1>BITÁCORA DE INGENIERÍA EDUCATIVA</h1>
+                    <div class="subtitle">// PORTAFOLIO #4: BIOPEDAGOGÍA Y ECOFORMACIÓN</div>
+                </div>
+                <div class="logo-container">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ15IADZfze3he6DvLOvQihBqoRE9Wy3HeVVQ&s" alt="Logo Universidad Nacional">
+                </div>
+            </div>
+        </header>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-label">Alumno / Ingeniero</div>
+                <div class="info-value">Daniel Tijerino Cerón</div>
+            </div>
+            
+            <div class="info-card" style="border-left-color: #8b5cf6;">
+                <div class="info-label">Docente / Guía</div>
+                <div class="info-value">Prof. Carmen Amelia Ulate Quesada</div>
+            </div>
+
+            <div class="info-card" style="border-left-color: var(--tech-blue);">
+                <div class="info-label">Fecha de Emisión</div>
+                <div class="info-value">06 de Febrero de 2026</div>
+            </div>
+            
+            <div class="info-card" style="border-left-color: var(--primary-dark);">
+                <div class="info-label">Misión Crítica</div>
+                <div class="info-value">Reconfigurar el "Sistema"</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>INTRODUCCIÓN: CONVERGENCIA CRÍTICA</h2>
+            </div>
+            <p>Durante esta semana, el análisis de las lecturas de Villareal y Mallart ha representado un punto de inflexión —un verdadero <em>glitch</em> positivo— en mi perspectiva docente. Como ingeniero en sistemas, mi formación base siempre ha priorizado la lógica binaria, la estructura rígida y la eficiencia de los procesos; sin embargo, estos textos me han obligado a confrontar esa visión mecanicista con una realidad más compleja: la educación no es un algoritmo predecible, sino un proceso vivo y sistémico.</p>
+            <p>Lo que más rescato de Villareal es el concepto de que el aprendizaje es una transformación biológica. Entender al estudiante no como un "usuario" (input/output) que recibe datos, sino como un ser vivo en constante <strong>autopoiesis</strong> (creándose a sí mismo), desafía la forma en que tradicionalmente impartimos informática en los CTPs.</p>
+            <p>Por otro lado, Mallart me ha brindado una herramienta conceptual clave con la <strong>Ecoformación</strong>. Hasta ahora, consideraba que la enseñanza recaía solo en mí (<em>heteroformación</em>) o en el estudiante (<em>autoformación</em>), ignorando por completo la advertencia de Rousseau y Mallart: el entorno físico y las cosas también nos educan.</p>
+
+            <div class="scanner-frame">
+                <div class="scan-line"></div>
+                <img src="imagen1.jpg" alt="Planta creciendo en circuito">
+                <div class="caption-bar">FIG 1.0 // FUSIÓN BIO-TECNOLÓGICA</div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>SÍNTESIS Y ANÁLISIS CRÍTICO</h2>
+            </div>
+            
+            <div class="proposal-card border-blue">
+                <h3>A. El "Software" del Aprendizaje: La Visión Biopedagógica</h3>
+                <p style="margin-top:15px;">Villareal nos presenta una crítica feroz a la educación tradicional, señalando que esta suele ignorar la condición de "ser vivo" del estudiante.</p>
+                <ul class="tech-list">
+                    <li><strong>Punto crítico:</strong> En la educación técnica, a menudo caemos en el error de "masificar la educación", tratando a los grupos como lotes de producción idénticos. Villareal nos recuerda que cada organismo (estudiante) tiene una historia y un contexto biológico único. Ignorar esto es programar sobre un sistema operativo incompatible.</li>
+                    <li><strong>La Ética del Cuidado:</strong> La autora introduce la necesidad de pasar de una moral rígida a una "ética del cuidado". En mi área, esto es disruptivo: ¿Cuidamos al estudiante en un laboratorio de cómputo o solo cuidamos el equipo?</li>
+                </ul>
+            </div>
+
+            <div class="proposal-card border-green">
+                <h3>B. El "Hardware" del Entorno: La Propuesta Ecoformadora</h3>
+                <p style="margin-top:15px;">Mallart expande el sistema. No basta con la introspección; necesitamos entender dónde estamos parados.</p>
+                <ul class="tech-list">
+                    <li><strong>Formación Tripolar:</strong> Mallart explica que nos educan tres maestros: los demás, nuestra naturaleza y <strong>las cosas</strong> (el entorno).</li>
+                    <li><strong>El Entorno Artificial:</strong> Este punto es crucial para mi perfil. Mallart señala que el "entorno artificial" (arquitectura, urbanismo, tecnología) tiene un impacto formativo. En un CTP, el taller o laboratorio es ese entorno artificial que está moldeando silenciosamente la conducta del estudiante.</li>
+                </ul>
+            </div>
+
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>AUTOANÁLISIS: DEPURACIÓN DEL SISTEMA</h2>
+            </div>
+            <p>Al aplicar el pensamiento crítico a mi propia labor en el CTP, identifico "errores de sistema" que he perpetuado inconscientemente:</p>
+            
+            <ol class="tech-list" style="list-style: decimal inside;">
+                <li><strong>La Ceguera Tecnológica:</strong> Mallart advierte sobre la desconexión con el entorno natural. Mis clases ocurren en entornos herméticos, con aire acondicionado y luz artificial. He enseñado a mis estudiantes a valorar la "nube" sin explicarles que esa nube son servidores físicos consumiendo agua y electricidad. He validado un <strong>analfabetismo ecológico</strong> al no mostrar el costo ambiental de cada línea de código.</li>
+                <li><strong>El Estudiante como Periférico:</strong> Basándome en Villareal, he pecado de ver al estudiante como un receptor de instrucciones. La <strong>autopoiesis</strong> implica que el estudiante se construye a sí mismo. Mi rol no debe ser el de un programador que escribe código en ellos, sino el de un facilitador que crea el entorno propicio para que ellos desarrollen su propia versión.</li>
+                <li><strong>Eficiencia vs. Sostenibilidad:</strong> Como ingeniero, busco la eficiencia (velocidad). Pero la <strong>biopedagogía</strong> sugiere que la vida busca el "equilibrio dinámico", no solo la velocidad. He priorizado que el código "corra rápido" sobre si el código es ético o necesario.</li>
+            </ol>
+
+            <div class="scanner-frame">
+                <div class="scan-line"></div>
+                <img src="imagen2.jpg" alt="Basura Electrónica">
+                <div class="caption-bar">FIG 2.0 // IMPACTO CRÍTICO DEL HARDWARE</div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>PROPUESTA: ACTUALIZACIÓN v2.0</h2>
+            </div>
+            <p>Para aterrizar estas teorías en mi realidad de aula (CTP), propongo tres acciones concretas que integran la visión de ambos autores:</p>
+
+            <div class="proposal-card border-dark">
+                <div class="proposal-header">
+                    <h3>1. La Cuarta "R": Redistribuir</h3>
+                    <span class="proposal-badge">Prioridad Alta</span>
+                </div>
+                <p><strong>Concepto:</strong> Mallart añade a las clásicas 3R (Reducir, Reutilizar, Reciclar) una cuarta: <strong>Redistribuir</strong> o restituir.</p>
+                <p><strong>Aplicación:</strong> Implementaré el uso exclusivo de <strong>Software Libre</strong> y hardware abierto en mis módulos. Enseñar tecnologías privativas crea dependencia y desigualdad. El código abierto es una forma técnica de "redistribución" del conocimiento y poder, alineada con la justicia social que menciona la Carta de la Tierra.</p>
+            </div>
+
+            <div class="proposal-card border-dark">
+                <div class="proposal-header">
+                    <h3>2. Auditoría de Ecoformación</h3>
+                    <span class="proposal-badge">Análisis</span>
+                </div>
+                <p><strong>Concepto:</strong> Mis estudiantes aprenden a ensamblar computadoras, pero rara vez se preguntan de dónde vienen.</p>
+                <p><strong>Aplicación:</strong> Integraremos el análisis del <strong>Ciclo de Vida del Producto</strong>. Antes de tocar un teclado, el estudiante debe entender la huella ecológica de ese dispositivo (minerales de conflicto, basura electrónica). Convertiremos el "entorno artificial" en un objeto de estudio crítico, no solo de uso.</p>
+            </div>
+
+            <div class="proposal-card border-dark">
+                <div class="proposal-header">
+                    <h3>3. Programación Biopedagógica</h3>
+                    <span class="proposal-badge">Práctica</span>
+                </div>
+                <p><strong>Aplicación:</strong> Dejar de enseñar con ejemplos abstractos de negocios y empezar a usar problemas reales del entorno local para los proyectos de programación. Que el software resuelva problemas de la comunidad (gestión de agua, residuos), conectando así la "vida" con la técnica.</p>
+            </div>
+
+            <div class="scanner-frame">
+                <div class="scan-line"></div>
+                <img src="imagen3.jpg" alt="Código Open Source">
+                <div class="caption-bar">FIG 3.0 // REDISTRIBUCIÓN DE CONOCIMIENTO</div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2>CONCLUSIONES Y CIERRE</h2>
+            </div>
+            <ul class="tech-list">
+                <li><strong>La Técnica no es Neutra:</strong> He aprendido que enseñar tecnología sin conciencia ecológica es una forma de violencia silenciosa. Como dice Mallart, "no sería legítimo cuidar el paisaje y olvidar a las personas". La educación técnica debe humanizarse.</li>
+                <li><strong>Somos Sistemas Abiertos:</strong> Villareal me ha enseñado que el aprendizaje es un proceso de <strong>causalidad recíproca</strong>. Yo cambio al estudiante, pero el estudiante y el entorno me cambian a mí. Aceptar esta vulnerabilidad mejora mi docencia.</li>
+                <li><strong>Del Ego al Eco:</strong> La transición más importante es mental. Debo dejar de ver mi materia como el centro del universo educativo y entenderla como una herramienta para la <strong>sustentabilidad de la morada humana</strong>.</li>
+            </ul>
+
+            <div style="margin-top: 40px; padding: 25px; border-left: 4px solid var(--primary-dark); background: #f3f4f6; border-radius: 0 10px 10px 0;">
+                <p style="margin:0; font-style: italic; font-weight: 500;">"Este portafolio no es solo un resumen académico; es un compromiso profesional. La 'Pedagogía para la Vida' no es un módulo extra, es el sistema operativo sobre el cual debe correr cualquier otra competencia técnica. Si formamos técnicos excelentes pero humanos inconscientes, habremos fallado en la tarea más básica: garantizar que haya un futuro donde trabajar."</p>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>// FIN DEL REPORTE //</p>
+            <p>© 2026 Daniel Tijerino Cerón | Ingeniería & Docencia</p>
+            <p style="font-size: 0.8rem; margin-top: 10px; color: var(--tech-green);">Generado con Conciencia Biopedagógica</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
